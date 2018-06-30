@@ -1,12 +1,13 @@
 FROM rust:1.27
 
 WORKDIR /usr/src/kubeless
-COPY Cargo.toml .
-COPY src .
-
 RUN rustup default nightly \
-  && rustup update \
-  && cargo update
+  && rustup update
+COPY Cargo.toml .
+COPY src ./src/
+
+ENV USER root
+RUN cargo new kubeless --bin
 
 
-CMD ["kubeless"]
+CMD ["bash"]
