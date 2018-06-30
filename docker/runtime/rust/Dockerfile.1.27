@@ -7,7 +7,8 @@ COPY Cargo.toml .
 COPY src ./src/
 
 ENV USER root
-RUN cargo new kubeless --bin
+RUN cargo new kubeless --bin \
+  && cargo build
 
 
-CMD ["bash"]
+CMD ["/usr/src/kubeless/target/debug/kubeless"]
