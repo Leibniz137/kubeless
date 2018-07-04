@@ -27,6 +27,11 @@ class TestContainer:
         resp.raise_for_status()
         assert resp.text == 'OK'
 
+    def test_hello_world(self, container):
+        resp = requests.get('http://localhost:8000')
+        resp.raise_for_status()
+        assert resp.text == 'Hello, world!'
+
 
 class TestFUNCPORT:
     @pytest.fixture(scope="class")
