@@ -3,13 +3,12 @@ FROM rust:1.27
 WORKDIR /usr/src/kubeless
 RUN rustup default nightly \
   && rustup update
-COPY Cargo.toml .
-COPY src ./src/
 
 ENV USER root
-RUN cargo new kubeless --bin \
-  && cargo build
-
-
 CMD ["/usr/src/kubeless/target/debug/kubeless"]
 ENV ROCKET_ADDRESS '0.0.0.0'
+
+RUN cargo new kubeless --bin
+COPY Cargo.toml .
+COPY src ./src/
+RUN cargo build
