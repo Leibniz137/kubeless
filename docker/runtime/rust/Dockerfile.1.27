@@ -12,3 +12,5 @@ RUN cargo new kubeless --bin
 COPY Cargo.toml .
 COPY src ./src/
 RUN cargo build
+ENV FUNC_PORT 8000
+CMD ROCKET_PORT=$FUNC_PORT /usr/src/kubeless/target/debug/kubeless
