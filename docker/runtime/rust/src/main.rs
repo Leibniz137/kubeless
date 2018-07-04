@@ -9,11 +9,11 @@ fn index() -> &'static str {
 }
 
 #[get("/healthz")]
-fn index() -> &'static str {
+fn healthz() -> &'static str {
     "OK"
 }
 
 
 fn main() {
-    rocket::ignite().mount("/", routes![index]).launch();
+    rocket::ignite().mount("/", routes![index, healthz]).launch();
 }
