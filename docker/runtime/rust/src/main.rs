@@ -3,9 +3,14 @@
 
 extern crate rocket;
 
+fn hello_world() -> &'static str {
+    "Hello, world!"
+}
+
+
 #[get("/")]
 fn index() -> &'static str {
-    "Hello, world!"
+    return hello_world()
 }
 
 #[get("/healthz")]
